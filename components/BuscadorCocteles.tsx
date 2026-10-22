@@ -14,8 +14,6 @@ export function BuscadorCocteles() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
         if (data.drinks) {
           setCocteles(data.drinks);
         } else {
@@ -34,12 +32,17 @@ export function BuscadorCocteles() {
   const listaImagenesJSX = [];
   for (let cada_imagen of imagenes) {
     listaImagenesJSX.push(
-      <img key={cada_imagen} src={cada_imagen} alt="" width={100} />,
+      <img
+        key={cada_imagen}
+        src={cada_imagen}
+        alt=""
+        className="w-24 h-24 object-cover rounded-md border shadow-sm"
+      />,
     );
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 w-full max-w-lg">
       <Field orientation="horizontal">
         <Input
           type="search"
@@ -48,8 +51,10 @@ export function BuscadorCocteles() {
         />
         <Button onClick={buscarCoctel}>Search</Button>
       </Field>
-      <p>{nombres}</p>
-      <div className="flex flex-row justify-around align-center ">{listaImagenesJSX}</div>
+      <p className="text-sm font-medium text-center">{nombres.join(", ")}</p>
+      <div className="flex flex-row flex-wrap justify-center items-center gap-3">
+        {listaImagenesJSX}
+      </div>
     </div>
   );
 }
