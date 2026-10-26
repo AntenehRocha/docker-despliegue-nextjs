@@ -12,4 +12,4 @@ RUN npm install
 COPY . .
 
 # comando para arrancar la app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev1"]
