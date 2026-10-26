@@ -5,12 +5,8 @@ services:
     restart: always
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
       - HOSTNAME=0.0.0.0
-      - WATCHPACK_POLLING=true
       - DATABASE_URL=postgresql://root:root@db:5432/coctel_db
     depends_on:
       - db

@@ -1,15 +1,9 @@
-FROM node:20-alpine
-
+FROM node:14
 WORKDIR /app
-
-# copiamos los archivos de configuración de npm
 COPY package*.json ./
-
-# instalamos las dependencias
-RUN npm install
-
-# copiamos todo el resto
+RUN npm ci
 COPY . .
-
-# comando para arrancar la app
-CMD ["npm", "run", "dev1"]
+RUN npm run build
+RUN npm install -g next
+EXPOSE 3000
+CMD ["next", "start", "-p", "3000"]
